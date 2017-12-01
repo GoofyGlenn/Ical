@@ -49,6 +49,10 @@ public class CalendarTest {
 			
 			// 4. Tear-down
 		}
+		@Test
+		public void testgithub() {
+			System.out.println("I hate github");
+		}
 		
 		
 		
