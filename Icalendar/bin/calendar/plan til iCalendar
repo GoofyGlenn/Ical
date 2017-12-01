@@ -1,0 +1,76 @@
+Calender GUI:
+'
+
+skal have et vindue som 
+
+
+
+
+
+
+Calendar object
+skal indeholde VEVENT 
+eller TODO
+eller JOURNAL
+eller FREEBUSY
+eller TIMEZONE
+
+
+public class Calendar
+	
+	BufferedWriter bw;
+	public Calendar (String filename) {
+		try {
+			FileWriter calwriter = new FileWriter(filename);
+			bw = new BufferedWriter(calwriter);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	instans af event object
+	
+	
+	public createcal (){
+	
+	udskriver elementer	
+	
+	bw skriv STARTCALENDAR
+	bw skriv 
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+EVENT object
+skal indeholde
+DT start = String "år" "måned" "dag" "time" "minut" "sekund"
+DT End = String "år" "måned" "dag" "time" "minut" "sekund"
+hver af værdierne ska være int
+int år;
+int måned; 
+etc etc.
+
+
+
+TODO object
+skal have DT Stamp
+skal have uid
