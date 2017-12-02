@@ -54,7 +54,17 @@ public class CalendarTest {
 			System.out.println("I hate github");
 		}
 		
-		
+		@Test 
+		public void testsummary() {
+			// setup + execute
+			LocalDateTime start = LocalDateTime.of(2010, 12, 12, 12, 12, 12);
+			LocalDateTime end = LocalDateTime.of(2010, 12, 12, 13, 13, 13);
+			Event event = new Event(start,end);
+			String summary = "is this love?";
+			event.setSummary(summary);
+			// assert
+			assertEquals("is this love?", event.getSummary());
+		}
 		
 
 	}
