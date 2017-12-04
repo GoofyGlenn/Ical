@@ -1,4 +1,5 @@
 import static org.junit.Assert.*;
+import components.*;
 
 import java.time.LocalDateTime;
 import java.time.*;
@@ -7,6 +8,7 @@ import org.junit.Test;
 
 public class CalendarTest {
 
+	
 
 		@Test
 		public void testInitialiseringAfEventMedStartOgEnd() {
@@ -66,5 +68,17 @@ public class CalendarTest {
 			assertEquals("is this love?", event.getSummary());
 		}
 		
+		
+		@Test
+		public void testDesc() {
+			// setup + execute
+			LocalDateTime start = LocalDateTime.of(2010, 12, 12, 12, 12, 12);
+			LocalDateTime end = LocalDateTime.of(2010, 12, 12, 13, 13, 13);
+			Event event = new Event(start, end);
+			String description = "a question to ask in the case of.... I don't know ";
+			event.setDesc(description);
+			// assert
+			assertEquals("a question to ask in the case of.... I don't know ", event.getDesc());
+		}
 
 	}

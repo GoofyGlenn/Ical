@@ -1,29 +1,49 @@
 package components;
 
-
+import java.time.Duration;
+import java.time.LocalDateTime;
 
 public class Event {
-	private String startdate= "DTSTART: ";
-	private String enddate= "DTEND: ";
-	
-	public String startEvent() {
-		return "BEGIN : VEVENT";
-	}
-	public String endEvent() {
-		return "END: VEVENT";
-	}
-	
-	
-	public String getStartdate(String year, String month,String day, String hour, String minute ) {
-		 String second="00";
-		
-		return startdate+ year+month+day+hour+minute+second;
-	}
-	public String getEnddate(String year, String month,String day, String hour, String minute ) {
-		 String second="00";
-		
-		return enddate+ year+month+day+hour+minute+second;
+	private LocalDateTime start;
+	private LocalDateTime end;
+	private String summary;
+	private String description;
+
+	public Event(LocalDateTime start, LocalDateTime end) {
+		this.start=start;
+		this.end=end;
 	}
 
-	
+	public Event(LocalDateTime start, Duration duration) {
+		this(start, start.plus(duration));
+	}
+
+	public LocalDateTime getStart() {
+		return start;
+	}
+
+	public LocalDateTime getEnd() {
+		return end;
+	}
+
+	public Duration getDuration() {
+		return Duration.from(Duration.between(start, end));
+	}
+
+	public void setSummary(String summary) {
+		this.summary=summary;
+	}
+
+	public String getSummary() {
+		return summary;
+	}
+
+	public void setDesc(String description) {
+		this.description=description;
+	}
+
+	public String getDesc() {
+		return description;
+	}
+
 }
