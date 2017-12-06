@@ -7,6 +7,7 @@ import components.*;
 
 public class Calendar {
 	// brug local date time til anvendelse 	
+	Event event;
 	
 	BufferedWriter bw;
 	public Calendar (String filename) {
@@ -21,8 +22,8 @@ public class Calendar {
 	public Calendar(String filename, Event event) {
 		
 	}
-	public String getEvent() {
-		return null;
+	public Event getEvent() {
+		return event;
 	}
 	
 	
