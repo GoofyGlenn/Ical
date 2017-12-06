@@ -6,6 +6,8 @@ import java.time.*;
 
 import org.junit.Test;
 
+import calendar.Calendar;
+
 public class CalendarTest {
 
 	
@@ -81,4 +83,16 @@ public class CalendarTest {
 			assertEquals("a question to ask in the case of.... I don't know ", event.getDesc());
 		}
 
+		
+		@Test
+		public void testCalendar() {
+			// setup and execute
+			LocalDateTime start = LocalDateTime.of(2010, 12, 12, 12, 12, 12);
+			LocalDateTime end = LocalDateTime.of(2010, 12, 12, 13, 13, 13);
+			Event event = new Event(start, end);
+			Calendar cal = new Calendar("stuff.ics", event);
+			
+			// assert
+			assertEquals("stuff.ics"+cal.getEvent(), "stuff.ics"+cal.getEvent());
+		}
 	}
