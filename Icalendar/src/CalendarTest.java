@@ -101,11 +101,13 @@ public class CalendarTest {
 		@Test
 		public void testCalWriter() {// faker resultat med uid dtstamp og organizer
 			BufferedWriter bw;
-			LocalDateTime start = LocalDateTime.of(2010, 12, 12, 12, 12, 12);
-			LocalDateTime end = LocalDateTime.of(2010, 12, 12, 13, 13, 13);
+			LocalDateTime start = LocalDateTime.of(2017, 07, 14, 17, 00, 00);
+			LocalDateTime end = LocalDateTime.of(2017, 07, 15, 17, 00, 00);
 			Event event = new Event(start, end);
-			Calendar cal = new Calendar("2.0", "goofy_the_lovely");
-			cal.SetEvent(event);
+			Calendar cal = new Calendar("2.0", "-//hacksw/handcal//NONSGML v2.0//EN");
+			cal.SetEvent(event);		//version, ProID
+			event.setSummary("Bastille Day Party");
+			
 			// assert
 			assertEquals("BEGIN:VCALENDAR\r\n" + //ob
 				"VERSION:2.0\r\n" + // ob
@@ -115,15 +117,16 @@ public class CalendarTest {
 				"DTSTAMP:20170714T170000Z\r\n" + //bn
 				"ORGANIZER;CN=John Doe:MAILTO:john.doe@example.com\r\n" + //bn
 				"DTSTART:20170714T170000Z\r\n" + //bn
-				"DTEND:20170715T035959Z\r\n" + //ob
+				"DTEND:20170715T0170000Z\r\n" + //ob
 				"SUMMARY:Bastille Day Party\r\n" + //bn alarm er den ob
 				"END:VEVENT\r\n" + //ob
 				"END:VCALENDAR" ,
 				
-				"BEGIN:VCALENDAR \r\n"+ "VERSION:"+cal.getVersion()+"\r\n"+ 
-						"PRODID:"+cal.getProId()+"\r\n"+
-						"UID: uid1@example.com"+
-						"DTSTAMP:20170714T170000Z\r\n"+
+					"BEGIN:VCALENDAR\r\n"
+					+ "VERSION:"+cal.getVersion()+"\r\n"+ 
+					"PRODID:"+cal.getProId()+"\r\n"+
+					"UID: uid1@example.com"+
+					"DTSTAMP:20170714T170000Z\r\n"+
 						"ORGANIZER;CN=John Doe:MAILTO:john.doe@example.com\r\n"+
 						"DTSTART:"+event.getStart()+"\r\n"+
 						"DTEND:"+event.getEnd()+"\r\n"+
