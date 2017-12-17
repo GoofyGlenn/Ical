@@ -3,6 +3,7 @@ import components.*;
 
 import java.time.LocalDateTime;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.time.*;
 
 import org.junit.Test;
@@ -98,9 +99,38 @@ public class CalendarTest {
 			assertEquals("2.0" +"goofy_the_lovely", "2.0"+ "goofy_the_lovely");
 		}
 		@Test
-		public void testCalReader() {
-			// setup and execute
-			BufferedReader bfR = new BufferedReader(null);
+		public void testCalWriter() {// faker resultat med uid dtstamp og organizer
+			BufferedWriter bw;
+			LocalDateTime start = LocalDateTime.of(2010, 12, 12, 12, 12, 12);
+			LocalDateTime end = LocalDateTime.of(2010, 12, 12, 13, 13, 13);
+			Event event = new Event(start, end);
+			Calendar cal = new Calendar("2.0", "goofy_the_lovely");
+			cal.SetEvent(event);
+			// assert
+			assertEquals("BEGIN:VCALENDAR\r\n" + //ob
+				"VERSION:2.0\r\n" + // ob
+				"PRODID:-//hacksw/handcal//NONSGML v2.0//EN\r\n" + //ob
+				"BEGIN:VEVENT\r\n" + //ob
+				"UID:uid1@example.com\r\n" + //bn
+				"DTSTAMP:20170714T170000Z\r\n" + //bn
+				"ORGANIZER;CN=John Doe:MAILTO:john.doe@example.com\r\n" + //bn
+				"DTSTART:20170714T170000Z\r\n" + //bn
+				"DTEND:20170715T035959Z\r\n" + //ob
+				"SUMMARY:Bastille Day Party\r\n" + //bn alarm er den ob
+				"END:VEVENT\r\n" + //ob
+				"END:VCALENDAR" ,
+				
+				"BEGIN:VCALENDAR \r\n"+ "VERSION:"+cal.getVersion()+"\r\n"+ 
+						"PRODID:"+cal.getProId()+"\r\n"+
+						"UID: uid1@example.com"+
+						"DTSTAMP:20170714T170000Z\r\n"+
+						"ORGANIZER;CN=John Doe:MAILTO:john.doe@example.com\r\n"+
+						"DTSTART:"+event.getStart()+"\r\n"+
+						"DTEND:"+event.getEnd()+"\r\n"+
+						"SUMMARY:"+event.getSummary()+
+						"END:VEVENT\r\n" +
+						"END:VCALENDAR");
 		}
+		
 		
 	}

@@ -32,6 +32,23 @@ public class Calendar {
 	public Event getEvent() {
 		return event;
 	}
+
+	// indsættelse 
+	public String getVersion() {
+		return version;
+	}
+
+	public void setVersion(String version) {
+		this.version = version;
+	}
+
+	public String getProId() {
+		return ProId;
+	}
+
+	public void setProId(String proId) {
+		ProId = proId;
+	}
 	
 	
 	/*

@@ -17,5 +17,15 @@ public class CalendarWriter {
 		}
 	}
 	
+//	
+//	public void write() {
+//		try {
+//			bw.write("BEGIN: VCALENDAR");
+//			
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//	}
+	
 	
 }
