@@ -1,27 +1,34 @@
 package calendar;
 
-import java.io.BufferedWriter;	
-import java.io.FileWriter;
-import java.io.IOException;
 import components.*;
 
 public class Calendar {
-	// brug local date time til anvendelse 	
-	Event event;
 	
-	BufferedWriter bw;
-	public Calendar (String filename) {
-		try {
-			FileWriter calwriter = new FileWriter(filename);
-			bw = new BufferedWriter(calwriter);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	// ændrer denne class til at kun indeholde objekter som events og følgende
+	//obligatoriske værdier er PROID og VERSION og bruges i constructor
+	private String version ;
+	private String ProId ;
+	
+	// field med calendar componenter
+	private Event event;
+	
+	
+	
+	// calendar constructor
+	public Calendar(String version, String proid ) {
+		this.version=version;
+		this.ProId=proid;
+	}		
+	
+	
+	
+	
+	
+	// set og get metoder til componenter
+	public void SetEvent(Event event) {
+		this.event=event;
 	}
-	public Calendar(String filename, Event event) {
-		
-	}
+			
 	public Event getEvent() {
 		return event;
 	}

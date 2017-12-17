@@ -2,6 +2,7 @@ import static org.junit.Assert.*;
 import components.*;
 
 import java.time.LocalDateTime;
+import java.io.BufferedReader;
 import java.time.*;
 
 import org.junit.Test;
@@ -90,9 +91,16 @@ public class CalendarTest {
 			LocalDateTime start = LocalDateTime.of(2010, 12, 12, 12, 12, 12);
 			LocalDateTime end = LocalDateTime.of(2010, 12, 12, 13, 13, 13);
 			Event event = new Event(start, end);
-			Calendar cal = new Calendar("stuff.ics", event);
+			Calendar cal = new Calendar("2.0", "goofy_the_lovely");
+			cal.SetEvent(event);
 			
 			// assert
-			assertEquals("stuff.ics"+cal.getEvent(), "stuff.ics"+cal.getEvent());
+			assertEquals("2.0" +"goofy_the_lovely", "2.0"+ "goofy_the_lovely");
 		}
+		@Test
+		public void testCalReader() {
+			// setup and execute
+			BufferedReader bfR = new BufferedReader(null);
+		}
+		
 	}
