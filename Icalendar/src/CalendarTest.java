@@ -136,23 +136,23 @@ public class CalendarTest {
 					"END:VEVENT\r\n" +
 					"END:VCALENDAR");
 		}
-		@Test
-		public void testcalwrite() {
-			CalendarWriter calw = new CalendarWriter("Test.ics");
-			// assert
-			assertEquals("BEGIN:VCALENDAR\r\n" + //ob
-				"VERSION:2.0\r\n" + // ob
-				"PRODID:-//hacksw/handcal//NONSGML v2.0//EN\r\n" + //ob
-				"BEGIN:VEVENT\r\n" + //ob
-				"UID:uid1@example.com\r\n" + //bn
-				"DTSTAMP:20170714T170000Z\r\n" + //bn
-				"ORGANIZER;CN=John Doe:MAILTO:john.doe@example.com\r\n" + //bn
-				"DTSTART:20170714T170000Z\r\n" + //bn
-				"DTEND:20170715T0170000Z\r\n" + //ob
-				"SUMMARY:Bastille Day Party\r\n" + //bn alarm er den ob
-				"END:VEVENT\r\n" + //ob
-				"END:VCALENDAR", calw.write());
-		}
-		
+//		@Test         FAKETEST 
+//		public void testcalwrite() {
+//			CalendarWriter calw = new CalendarWriter("Test.ics");
+//			// assert
+//			assertEquals("BEGIN:VCALENDAR\r\n" + //ob
+//				"VERSION:2.0\r\n" + // ob
+//				"PRODID:-//hacksw/handcal//NONSGML v2.0//EN\r\n" + //ob
+//				"BEGIN:VEVENT\r\n" + //ob
+//				"UID:uid1@example.com\r\n" + //bn
+//				"DTSTAMP:20170714T170000Z\r\n" + //bn
+//				"ORGANIZER;CN=John Doe:MAILTO:john.doe@example.com\r\n" + //bn
+//				"DTSTART:20170714T170000Z\r\n" + //bn
+//				"DTEND:20170715T0170000Z\r\n" + //ob
+//				"SUMMARY:Bastille Day Party\r\n" + //bn alarm er den ob
+//				"END:VEVENT\r\n" + //ob
+//				"END:VCALENDAR", calw.write());
+//		}
+//		
 		
 	}
