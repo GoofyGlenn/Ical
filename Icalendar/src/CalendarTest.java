@@ -9,6 +9,7 @@ import java.time.*;
 import org.junit.Test;
 
 import calendar.Calendar;
+import calendar.CalendarWriter;
 
 public class CalendarTest {
 
@@ -116,23 +117,41 @@ public class CalendarTest {
 				"UID:uid1@example.com\r\n" + //bn
 				"DTSTAMP:20170714T170000Z\r\n" + //bn
 				"ORGANIZER;CN=John Doe:MAILTO:john.doe@example.com\r\n" + //bn
-				"DTSTART:20170714T170000Z\r\n" + //bn
-				"DTEND:20170715T0170000Z\r\n" + //ob
+				"DTSTART:2017-07-14T17:00Z\r\n" + //bn
+				"DTEND:2017-07-15T17:00Z\r\n" + //ob
 				"SUMMARY:Bastille Day Party\r\n" + //bn alarm er den ob
 				"END:VEVENT\r\n" + //ob
 				"END:VCALENDAR" ,
 				
-					"BEGIN:VCALENDAR\r\n"
-					+ "VERSION:"+cal.getVersion()+"\r\n"+ 
+					"BEGIN:VCALENDAR\r\n"+
+					"VERSION:"+cal.getVersion()+"\r\n"+ 
 					"PRODID:"+cal.getProId()+"\r\n"+
-					"UID: uid1@example.com"+
+					"BEGIN:VEVENT\r\n" + 
+					"UID:uid1@example.com\r\n"+
 					"DTSTAMP:20170714T170000Z\r\n"+
-						"ORGANIZER;CN=John Doe:MAILTO:john.doe@example.com\r\n"+
-						"DTSTART:"+event.getStart()+"\r\n"+
-						"DTEND:"+event.getEnd()+"\r\n"+
-						"SUMMARY:"+event.getSummary()+
-						"END:VEVENT\r\n" +
-						"END:VCALENDAR");
+					"ORGANIZER;CN=John Doe:MAILTO:john.doe@example.com\r\n"+
+					"DTSTART:"+event.getStart()+"Z\r\n"+
+					"DTEND:"+event.getEnd()+"Z\r\n"+
+					"SUMMARY:"+event.getSummary()+"\r\n"+
+					"END:VEVENT\r\n" +
+					"END:VCALENDAR");
+		}
+		@Test
+		public void testcalwrite() {
+			CalendarWriter calw = new CalendarWriter("Test.ics");
+			// assert
+			assertEquals("BEGIN:VCALENDAR\r\n" + //ob
+				"VERSION:2.0\r\n" + // ob
+				"PRODID:-//hacksw/handcal//NONSGML v2.0//EN\r\n" + //ob
+				"BEGIN:VEVENT\r\n" + //ob
+				"UID:uid1@example.com\r\n" + //bn
+				"DTSTAMP:20170714T170000Z\r\n" + //bn
+				"ORGANIZER;CN=John Doe:MAILTO:john.doe@example.com\r\n" + //bn
+				"DTSTART:20170714T170000Z\r\n" + //bn
+				"DTEND:20170715T0170000Z\r\n" + //ob
+				"SUMMARY:Bastille Day Party\r\n" + //bn alarm er den ob
+				"END:VEVENT\r\n" + //ob
+				"END:VCALENDAR", calw.write());
 		}
 		
 		
